@@ -1,0 +1,20 @@
+subtype, vendor_action, vendor_status, action, change_type
+user, authentication, success, success, auth
+user, authentication, failure, failure, auth
+wireless, client-ip-detected, unknown, success, auth
+wireless, client-deauthentication, unknown, failure, auth
+vpn, negotiate, success, success, auth
+vpn, negotiate, failure, failure, auth
+vpn, negotiate, negotiate_error, failure, auth
+vpn, negotiate, esp_error, failure, auth
+system, login, success, success, auth
+system, login, failed, failure, auth
+system, logout, success, success, auth
+system, logout, failed, failure, auth
+system, add, unknown, created, network_config
+system, Add, unknown, created, network_config
+system, delete, unknown, deleted, network_config
+system, Delete, unknown, deleted, network_config
+system, Edit, unknown, modified, network_config
+system, shutdown, unknown, modified,restart
+system, reboot, unknown, modified,restart
