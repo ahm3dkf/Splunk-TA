@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0", 
+  "info": {
+    "title": "Splunk App for Unix", 
+    "id": {
+      "group": null, 
+      "name": "splunk_app_for_nix", 
+      "version": "5.2.5"
+    }, 
+    "author": [
+      {
+        "name": "Splunk, Inc.", 
+        "email": "support@splunk.com",
+        "company": null
+      }
+    ],
+    "releaseDate": null,
+    "description": "The Splunk App for Unix and Linux offers exciting new ways to alert, report, and investigate on data collected from Unix and Linux operating systems.", 
+    "classification": {
+      "intendedAudience": "IT",
+      "categories": ["IT Operations"],
+      "developmentStatus": "Production/Stable"
+    }, 
+    "commonInformationModels": null, 
+    "license": {
+      "name": "Splunk Software License Agreement",
+      "text": "license-eula.txt",
+      "uri": "http://www.splunk.com/en_us/legal/splunk-software-license-agreement.html"
+    }, 
+    "releaseNotes": {
+      "name": "README", 
+      "text": "README.txt",
+      "uri": "http://docs.splunk.com/Documentation/UnixApp/latest/User/Releasenotes"
+    }
+  }, 
+  "dependencies": {
+    "Splunk_TA_nix": {
+      "version": ">=5.2.3"
+    }
+  },
+  "tasks": ["script://./bin/update_hosts.py"]
+}
