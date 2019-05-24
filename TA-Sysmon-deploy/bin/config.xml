@@ -1,0 +1,728 @@
+<!-- Merged Sysmon policy                                                                                                              -->
+<!-- ================================================================================================================================= -->
+<!--   Reference policy:                                                                                                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\baseconfig.xml                                                                       -->
+<!--   Merged policies:                                                                                                                -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\baseconfig.xml                                                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\sysmonconfig.xml                                                                     -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\10_process_access\exclude_lsass_noise.xml                                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\10_process_access\include_general_commment.xml                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\10_process_access\include_mimikatz_inmem.xml                                         -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\exclude_dell_process.xml                                              -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\exclude_intel_gfx_service.xml                                         -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\exclude_microsoft_click2run.xml                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\exclude_microsoft_services.xml                                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\exclude_microsoft_windows_update.xml                                  -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\exclude_scheduled_task_noise.xml                                      -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_appc_shim.xml                                                 -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_batch_files.xml                                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_default_profile_changes.xml                                   -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_downloaded_files.xml                                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_drivers_added.xml                                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_executables.xml                                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_file_interception.xml                                         -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_group_policy_changes.xml                                      -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_hta_scripts.xml                                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_links.xml                                                     -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_microsoft_clickonce.xml                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_microsoft_msbuild_scripts.xml                                 -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_ms_office_documents_with_macros.xml                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_outlook_attachments.xml                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_powershell_changes.xml                                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_powershell_scripts.xml                                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_python_scripts.xml                                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_scheduled_task_changes.xml                                    -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_startup_items.xml                                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_start_menu_items.xml                                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_system_driver_files.xml                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_visual_basic_scripts.xml                                      -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\11_file_create\include_wmi_changes.xml                                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\exclude_internet_explorer_settings.xml                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\exclude_webroot.xml                                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\exclude_widcomm_bt_driver.xml                                -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\exclude_windows_bootup_control.xml                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\exclude_windows_file_exts.xml                                -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\exclude_windows_generic_binaries.xml                         -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\exclude_windows_misc.xml                                     -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\exclude_windows_service_autostart.xml                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_accessibility_features.xml                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_appc_shim.xml                                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_authentication_package.xml                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_autoruns_and_startup_keys.xml                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_bypass_uac.xml                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_com_hijack.xml                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_disable_password_change.xml                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_dll_injection_at_process_launch.xml                  -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_dns_serverdll_injection.xml                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_group_policy_integrity.xml                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_image_file_exec_options.xml                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_internet_explorer_extentions_helpers_or_toolbars.xml -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_local_port_monitor.xml                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_netsh.xml                                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_office_clickonce.xml                                 -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_office_oulook_addins.xml                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_rdp_logon_execution.xml                              -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_security_support_provider.xml                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_sip_trust_provider_hijacking.xml                     -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_sysmon.xml                                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_terminal_service_execution.xml                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_w32time_provider.xml                                 -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windowsupdate_autostart.xml                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_app_path_hijack.xml                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_com_objects.xml                              -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_credential_providers.xml                     -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_defender_tampering.xml                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_firewall_tampering.xml                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_integrity_monitoring.xml                     -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_networking.xml                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_root_certs.xml                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_security_center_tampering.xml                -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_shell_hijack.xml                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_thumbnail_autostart.xml                      -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_windows_uac_tampering.xml                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_winsock.xml                                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\12_13_14_registry_event\include_wmi_implant.xml                                      -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_7zip_extractions.xml                              -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_batch_scripts.xml                                 -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_downloads.xml                                     -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_exe_files.xml                                     -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_general_commment.xml                              -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_hta_scripts.xml                                   -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_lnk_shortcuts.xml                                 -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_outlook_attachments.xml                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_powershell_scripts.xml                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_registry_file.xml                                 -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\15_file_create_stream_hash\include_visual_basic_scripts.xml                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\17_18_pipe_event\include_general_commment.xml                                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\19_20_21_wmi_event\include_wmi_create.xml                                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_adobe_acrobat.xml                                         -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_adobe_creative_cloud.xml                                  -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_adobe_flash.xml                                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_adobe_supporting_processes.xml                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_cisco_anyconnect.xml                                      -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_dotnet-3-or-4.xml                                         -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_drivers.xml                                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_dropbox.xml                                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_google_chrome.xml                                         -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_microsoft_office_click2run.xml                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_microsoft_office_services.xml                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_mozilla_firefox.xml                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_splunk.xml                                                -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_splunk_universal_forwarder.xml                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_svchost.xml                                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_windows_defender.xml                                      -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\exclude_windows_generic_processes.xml                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_accessibility_features.xml                                -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_appc_shim.xml                                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_bitsadmin.xml                                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_bypass_uac.xml                                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_installutil.xml                                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_living_of_the_land.xml                                    -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_mavinject.xml                                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_microsoft_cmstp.xml                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_msbuild.xml                                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_regsvcs_regasm.xml                                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_syncappvpublishingserver.xml                              -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_windows_control_panel.xml                                 -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\1_process_creation\include_windows_remote_management.xml                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\2_file_create_time\exclude_onedrive.xml                                              -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\2_file_create_time\exclude_setups.xml                                                -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\2_file_create_time\include_temp_folder.xml                                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\2_file_create_time\include_users_folder.xml                                          -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\exclude_dropbox.xml                                   -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\exclude_microsoft_onedrive.xml                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\exclude_spotify.xml                                   -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\exclude_windows_update.xml                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_3rd_party_remote_management.xml               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_bitsadmin.xml                                 -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_hp_critical_services.xml                      -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_mavinject.xml                                 -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_native_windows_tools.xml                      -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_ports_proxies.xml                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_ports_suspicous.xml                           -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_psexec.xml                                    -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_suspicious_sources.xml                        -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_syncappvpublishingserver.xml                  -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\3_network_connection_initiated\include_tor.xml                                       -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\5_process_ended\include_users_and_temp_folders.xml                                   -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\6_driver_loaded_into_kernel\exclude_intel_drivers.xml                                -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\6_driver_loaded_into_kernel\exclude_microsoft_drivers.xml                            -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\7_image_load\include_general_warning.xml                                             -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\7_image_load\include_mimikatz_inmem.xml                                              -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\8_create_remote_thread\exclude_generic_windows_processes.xml                         -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\8_create_remote_thread\exclude_google_chrome.xml                                     -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\8_create_remote_thread\exclude_wmi.xml                                               -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\8_create_remote_thread\include_dll_injection.xml                                     -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\8_create_remote_thread\include_general_commment.xml                                  -->
+<!--     * C:\Users\ohartong\tools\sysmon-modular\9_raw_access_read\include_general_commment.xml                                       -->
+<!-- ================================================================================================================================= -->
+<Sysmon schemaversion="4.1">
+  <HashAlgorithms>*</HashAlgorithms>
+  <CheckRevocation />
+  <EventFiltering>
+    <ProcessCreate onmatch="include">
+      <Image condition="end with">hh.exe</Image>
+      <Image condition="end with">ipconfig.exe</Image>
+      <Image condition="end with">tree.com</Image>
+      <Image condition="end with">netstat.exe</Image>
+      <Image condition="end with">winrm.cmd</Image>
+      <Image condition="end with">net.exe</Image>
+      <Image condition="end with">pcalua.exe</Image>
+      <Image condition="end with">sdbinst.exe</Image>
+      <Image condition="end with">bash.exe</Image>
+      <Image condition="end with">runas.exe</Image>
+      <Image condition="end with">klist.exe</Image>
+      <Image condition="end with">taskkill.exe</Image>
+      <Image condition="end with">netsh.exe</Image>
+      <Image condition="end with">quser.exe</Image>
+      <Image condition="end with">MSBuild.exe</Image>
+      <Image condition="end with">cmd.exe</Image>
+      <Image condition="end with">regsvcs.exe</Image>
+      <Image condition="end with">wevtutil.exe</Image>
+      <Image condition="end with">reg.exe</Image>
+      <Image condition="end with">odbcconf.exe</Image>
+      <Image condition="end with">query.exe</Image>
+      <Image condition="end with">nslookup.exe</Image>
+      <Image condition="end with">regsvr32.exe</Image>
+      <Image condition="end with">InstallUtil.exe</Image>
+      <Image condition="end with">regasm.exe</Image>
+      <Image condition="end with">SyncAppvPublishingServer.exe</Image>
+      <Image condition="end with">Mavinject.exe</Image>
+      <Image condition="end with">bitsadmin.exe</Image>
+      <Image condition="end with">attrib.exe</Image>
+      <Image condition="end with">route.exe</Image>
+      <Image condition="end with">sysinfo.exe</Image>
+      <Image condition="end with">tracert.exe</Image>
+      <Image condition="end with">taskeng.exe</Image>
+      <Image condition="end with">CMSTP.exe</Image>
+      <Image condition="end with">qprocess.exe</Image>
+      <Image condition="end with">whoami.exe</Image>
+      <Image condition="end with">tasklist.exe</Image>
+      <Image condition="end with">cmdkey.exe</Image>
+      <Image condition="end with">wsmprovhost.exe</Image>
+      <Image condition="end with">powershell.exe</Image>
+      <CommandLine condition="contains">rundll32.exe shell32.dll,Control_RunDLL</CommandLine>
+      <CommandLine condition="contains">control.exe /name</CommandLine>
+      <CommandLine condition="contains">/logfile= /LogToConsole=false /U</CommandLine>
+      <ParentImage condition="end with">fodhelper.exe</ParentImage>
+      <ParentImage condition="end with">wmiprvse.exe</ParentImage>
+      <ParentImage condition="end with">DisplaySwitch.exe</ParentImage>
+      <ParentImage condition="end with">eventvwr.exe</ParentImage>
+      <ParentImage condition="end with">sethc.exe</ParentImage>
+      <ParentImage condition="end with">AtBroker.exe</ParentImage>
+      <ParentImage condition="end with">Magnify.exe</ParentImage>
+      <ParentImage condition="end with">osk.exe</ParentImage>
+      <ParentImage condition="end with">utilman.exe</ParentImage>
+      <ParentImage condition="end with">Narrator.exe</ParentImage>
+    </ProcessCreate>
+    <ProcessCreate onmatch="exclude">
+      <Image condition="end with">C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\UWA\updaterstartuputility.exe</Image>
+      <Image>C:\Windows\System32\conhost.exe</Image>
+      <Image>C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeC2RClient.exe</Image>
+      <Image condition="end with">C:\Windows\SysWOW64\Macromed\Flash\FlashPlayerUpdateService.exe</Image>
+      <Image>C:\Program Files (x86)\Microsoft Office\Office16\MSOSYNC.EXE</Image>
+      <Image condition="begin with">D:\Program Files\SplunkUniversalForwarder\bin\</Image>
+      <Image condition="end with">C:\Program Files (x86)\Common Files\Adobe\AdobeGCClient\AdobeGCClient.exe</Image>
+      <Image condition="end with">C:\Program Files (x86)\Adobe\Acrobat DC\Acrobat\LogTransport2.exe</Image>
+      <Image condition="end with">C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\P7\adobe_licutil.exe</Image>
+      <Image>C:\Windows\System32\wermgr.exe</Image>
+      <Image condition="begin with">D:\Program Files\Splunk\bin\</Image>
+      <Image>C:\Windows\System32\MusNotification.exe</Image>
+      <Image condition="end with">C:\Program Files (x86)\Dropbox\Update\DropboxUpdate.exe</Image>
+      <Image>C:\Windows\system32\sppsvc.exe</Image>
+      <Image condition="begin with">C:\Program Files\SplunkUniversalForwarder\bin\</Image>
+      <Image condition="end with">C:\Program Files (x86)\Adobe\Acrobat DC\Acrobat\AcroCEF\AcroCEF.exe</Image>
+      <Image condition="begin with">C:\Program Files\NVIDIA Corporation\</Image>
+      <Image condition="begin with">C:\Program Files\Windows Defender</Image>
+      <Image condition="begin with">C:\Program Files (x86)\Google\Update\</Image>
+      <Image>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorsvw.exe</Image>
+      <Image condition="end with">C:\Program Files (x86)\Common Files\Adobe\ARM\1.0\armsvc.exe</Image>
+      <Image>C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorsvw.exe</Image>
+      <Image condition="begin with">C:\Program Files\Realtek\</Image>
+      <Image condition="begin with">C:\Windows\SoftwareDistribution\Download\Install\AM_</Image>
+      <Image>C:\Windows\System32\wbem\WmiApSrv.exe</Image>
+      <Image condition="end with">C:\Program Files (x86)\Common Files\Adobe\ARM\1.0\AdobeARM.exe</Image>
+      <Image condition="end with">C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroCEF\RdrCEF.exe</Image>
+      <Image>C:\Windows\Microsoft.Net\Framework64\v3.0\WPF\PresentationFontCache.exe</Image>
+      <Image>C:\Windows\System32\powercfg.exe</Image>
+      <Image>C:\Windows\system32\MpSigStub.exe</Image>
+      <Image condition="end with">C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\P6\adobe_licutil.exe</Image>
+      <Image>C:\Windows\SysWOW64\wermgr.exe</Image>
+      <Image condition="end with">C:\Program Files (x86)\Adobe\Acrobat DC\Acrobat\AdobeCollabSync.exe</Image>
+      <Image condition="begin with">C:\Program Files\Splunk\bin\</Image>
+      <Image condition="end with">C:\Program Files (x86)\Adobe\Adobe Creative Cloud\ACC\Creative Cloud.exe</Image>
+      <Image>C:\Windows\System32\audiodg.exe</Image>
+      <Image condition="end with">C:\Program Files (x86)\Common Files\Adobe\Adobe Desktop Common\HEX\Adobe CEF Helper.exe</Image>
+      <Image>C:\Program Files\Common Files\Microsoft Shared\OfficeSoftwareProtectionPlatform\OSPPSVC.EXE</Image>
+      <Image>C:\Windows\System32\MusNotificationUx.exe</Image>
+      <Image condition="end with">C:\Windows\System32\CompatTelRunner.exe</Image>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -s SessionEnv</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted -p -s fhsvc</CommandLine>
+      <CommandLine>C:\Windows\system32\SearchIndexer.exe /Embedding</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k networkServiceNetworkRestricted</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k networkService -s LanmanWorkstation</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -s SENS</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -s BITS</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -s CertPropSvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k networkService -p -s DoSvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k devicesflow -s DevicesFlowUserSvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k networkService -s NlaSvc</CommandLine>
+      <CommandLine>C:\WINDOWS\system32\svchost.exe -k netsvcs -p -s wlidsvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k dcomlaunch -s PlugPlay</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localServiceNetworkRestricted -s TimeBrokerSvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -s Themes</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -s BDESVC</CommandLine>
+      <CommandLine condition="begin with">"C:\Program Files\Mozilla Firefox\plugin-container.exe" --channel</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k wsappx</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k rPCSS</CommandLine>
+      <CommandLine>C:\WINDOWS\System32\svchost.exe -k LocalSystemNetworkRestricted -p -s WdiSystemHost</CommandLine>
+      <CommandLine condition="begin with">"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --type=</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k utcsvc</CommandLine>
+      <CommandLine condition="begin with">C:\Windows\Microsoft.NET\Framework\v4.0.30319\ngen.exe</CommandLine>
+      <CommandLine condition="contains">AcroRd32.exe" /CR </CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted -s SensorService</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localService -s bthserv</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted -s DeviceAssociationService</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localService -s nsi</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted -s WPDBusEnum</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k unistackSvcGroup</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k secsvcs</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localServiceNetworkRestricted -s WFDSConMgrSvc</CommandLine>
+      <CommandLine>C:\WINDOWS\system32\svchost.exe -k appmodel -p -s tiledatamodelsvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localService -s EventSystem</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k appmodel</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -s Winmgmt</CommandLine>
+      <CommandLine>C:\WINDOWS\system32\svchost.exe -k wsappx -p -s AppXSvc</CommandLine>
+      <CommandLine condition="begin with">C:\Windows\system32\DllHost.exe /Processid</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k networkService -s TermService</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -s ProfSvc</CommandLine>
+      <CommandLine condition="begin with">"C:\Program Files\Google\Chrome\Application\chrome.exe" --type=</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localServiceNetworkRestricted -s EventLog</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localServiceAndNoImpersonation -s SensrSvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k camera -s FrameServer</CommandLine>
+      <CommandLine condition="contains">AcroRd32.exe" --channel=</CommandLine>
+      <CommandLine condition="begin with">"C:\Program Files (x86)\Mozilla Firefox\plugin-container.exe" --channel</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localServiceNetworkRestricted -s Dhcp</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -p -s ncaSvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localService -s w32Time</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted -s WdiSystemHost</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k defragsvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted -p -s WPDBusEnum</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k werSvcGroup</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted -s NcbService</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k dcomlaunch -s LSM</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k wsappx -s ClipSVC</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k networkService</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -s DsmSvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k networkService -s Dnscache</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted -s UmRdpService</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localServiceNoNetwork</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k netsvcs -s Gpsvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k appmodel -s StateRepository</CommandLine>
+      <CommandLine>C:\WINDOWS\System32\svchost.exe -k wsappx -p -s ClipSVC</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k imgsvc</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k wbioSvcGroup</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted -s TabletInputService</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localServiceNetworkRestricted</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k swprv</CommandLine>
+      <CommandLine>C:\Windows\system32\svchost.exe -k localServiceAndNoImpersonation</CommandLine>
+      <IntegrityLevel>AppContainer</IntegrityLevel>
+      <ParentImage>D:\Program Files\SplunkUniversalForwarder\bin\splunk.exe</ParentImage>
+      <ParentImage>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorsvw.exe</ParentImage>
+      <ParentImage>C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe</ParentImage>
+      <ParentImage condition="end with">C:\Program Files (x86)\Adobe\Adobe Creative Cloud\CCXProcess\CCXProcess.exe</ParentImage>
+      <ParentImage condition="end with">C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\P7\adobe_licutil.exe</ParentImage>
+      <ParentImage>C:\Windows\system32\SearchIndexer.exe</ParentImage>
+      <ParentImage condition="end with">C:\Program Files (x86)\Cisco\Cisco AnyConnect Secure Mobility Client\vpnagent.exe</ParentImage>
+      <ParentImage>D:\Program Files\SplunkUniversalForwarder\bin\splunkd.exe</ParentImage>
+      <ParentImage>D:\Program Files\Splunk\bin\splunkd.exe</ParentImage>
+      <ParentImage condition="end with">C:\Program Files (x86)\Adobe\Adobe Creative Cloud\CoreSync\CoreSync.exe</ParentImage>
+      <ParentImage>C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeC2RClient.exe</ParentImage>
+      <ParentImage condition="end with">C:\Program Files (x86)\Common Files\Adobe\AdobeGCClient\AGSService.exe</ParentImage>
+      <ParentImage condition="end with">C:\Program Files\Realtek\Audio\HDA\RtkAudioService64.exe</ParentImage>
+      <ParentImage condition="end with">C:\Program Files (x86)\Dropbox\Update\DropboxUpdate.exe</ParentImage>
+      <ParentImage>C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorsvw.exe</ParentImage>
+      <ParentImage condition="end with">C:\Program Files (x86)\Common Files\Adobe\ARM\1.0\AdobeARM.exe</ParentImage>
+      <ParentImage condition="end with">C:\Program Files (x86)\Adobe\Adobe Creative Cloud\ACC\Creative Cloud.exe</ParentImage>
+      <ParentImage>C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\UWA\updaterstartuputility.exe</ParentImage>
+      <ParentImage>C:\Program Files\Splunk\bin\splunkd.exe</ParentImage>
+      <ParentImage>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ngentask.exe</ParentImage>
+      <ParentImage>C:\Windows\Microsoft.NET\Framework\v4.0.30319\ngentask.exe</ParentImage>
+      <ParentImage condition="end with">C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeClickToRun.exe</ParentImage>
+      <ParentImage>C:\Program Files\SplunkUniversalForwarder\bin\splunkd.exe</ParentImage>
+      <ParentImage condition="begin with">C:\Program Files (x86)\Google\Update\</ParentImage>
+      <ParentCommandLine>C:\Windows\system32\svchost.exe -k localSystemNetworkRestricted</ParentCommandLine>
+      <ParentCommandLine condition="begin with">%%SystemRoot%%\system32\csrss.exe ObjectDirectory=\Windows</ParentCommandLine>
+      <ParentCommandLine condition="contains">C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ngentask.exe</ParentCommandLine>
+      <ParentCommandLine>C:\Windows\system32\svchost.exe -k netsvcs</ParentCommandLine>
+    </ProcessCreate>
+    <FileCreateTime onmatch="include">
+      <Image condition="begin with">C:\Users</Image>
+      <Image condition="begin with">C:\Temp</Image>
+    </FileCreateTime>
+    <FileCreateTime onmatch="exclude">
+      <Image condition="contains">setup</Image>
+      <Image condition="image">OneDrive.exe</Image>
+    </FileCreateTime>
+    <NetworkConnect onmatch="include">
+      <Image condition="image">vnc.exe</Image>
+      <Image condition="image">vncservice.exe</Image>
+      <Image condition="image">Mavinject.exe</Image>
+      <Image condition="image">psexec.exe</Image>
+      <Image condition="begin with">C:\Windows\Temp</Image>
+      <Image condition="image">tor.exe</Image>
+      <Image condition="image">wscript.exe</Image>
+      <Image condition="image">infDefaultInstall.exe</Image>
+      <Image condition="image">nbtstat.exe</Image>
+      <Image condition="image">regsvr32.exe</Image>
+      <Image condition="image">net.exe</Image>
+      <Image condition="image">msiexec.exe</Image>
+      <Image condition="image">rwinsta.exe</Image>
+      <Image condition="image">schtasks.exe</Image>
+      <Image condition="image">winexesvc.exe</Image>
+      <Image condition="image">wmic.exe</Image>
+      <Image condition="image">cmd.exe</Image>
+      <Image condition="image">bitsadmin.exe</Image>
+      <Image condition="image">at.exe</Image>
+      <Image condition="image">nslookup.exe</Image>
+      <Image condition="begin with">C:\Temp</Image>
+      <Image condition="image">powershell.exe</Image>
+      <Image condition="image">mmc.exe</Image>
+      <Image condition="image">net1.exe</Image>
+      <Image condition="image">tasklist.exe</Image>
+      <Image condition="image">replace.exe</Image>
+      <Image condition="image">javaws.exe</Image>
+      <Image condition="image">cscript.exe</Image>
+      <Image condition="image">reg.exe</Image>
+      <Image condition="image">notepad.exe</Image>
+      <Image condition="image">javaw.exe</Image>
+      <Image condition="image">omniinet.exe</Image>
+      <Image condition="image">psexesvc.exe</Image>
+      <Image condition="image">taskkill.exe</Image>
+      <Image condition="image">dsquery.exe</Image>
+      <Image condition="image">hh.exe</Image>
+      <Image condition="image">SyncAppvPublishingServer.exe</Image>
+      <Image condition="image">msbuild.exe</Image>
+      <Image condition="image">certutil.exe</Image>
+      <Image condition="image">hpsmhd.exe</Image>
+      <Image condition="begin with">C:\ProgramData</Image>
+      <Image condition="image">driverquery.exe</Image>
+      <Image condition="image">regsvcs.exe</Image>
+      <Image condition="image">\AA_v</Image>
+      <Image condition="image">mshta.exe</Image>
+      <Image condition="begin with">C:\Users</Image>
+      <Image condition="image">rundll32.exe</Image>
+      <Image condition="image">qwinsta.exe</Image>
+      <Image condition="image">sc.exe</Image>
+      <Image condition="image">qprocess.exe</Image>
+      <Image condition="image">vncviewer.exe</Image>
+      <Image condition="image">java.exe</Image>
+      <DestinationPort>1723</DestinationPort>
+      <DestinationPort>8080</DestinationPort>
+      <DestinationPort>23</DestinationPort>
+      <DestinationPort>9001</DestinationPort>
+      <DestinationPort>22</DestinationPort>
+      <DestinationPort>5900</DestinationPort>
+      <DestinationPort>3128</DestinationPort>
+      <DestinationPort>3389</DestinationPort>
+      <DestinationPort>9030</DestinationPort>
+      <DestinationPort>25</DestinationPort>
+      <DestinationPort>4500</DestinationPort>
+      <DestinationPort>1080</DestinationPort>
+      <DestinationPort>5800</DestinationPort>
+    </NetworkConnect>
+    <NetworkConnect onmatch="exclude">
+      <Image condition="image">OneDriveStandaloneUpdater.exe</Image>
+      <Image condition="image">Spotify.exe</Image>
+      <Image condition="end with">AppData\Roaming\Dropbox\bin\Dropbox.exe</Image>
+      <Image condition="image">OneDrive.exe</Image>
+      <DestinationHostname condition="end with">microsoft.com.nsatc.net</DestinationHostname>
+      <DestinationHostname condition="end with">microsoft.com.akadns.net</DestinationHostname>
+      <DestinationHostname condition="end with">microsoft.com</DestinationHostname>
+    </NetworkConnect>
+    <ProcessTerminate onmatch="include">
+      <Image condition="begin with">C:\Users</Image>
+      <Image condition="begin with">C:\Temp</Image>
+      <Image condition="begin with">C:\Windows\Temp</Image>
+    </ProcessTerminate>
+    <DriverLoad onmatch="include" />
+    <DriverLoad onmatch="exclude">
+      <Signature condition="begin with">Intel </Signature>
+      <Signature condition="contains">microsoft</Signature>
+      <Signature condition="contains">windows</Signature>
+    </DriverLoad>
+    <ImageLoad onmatch="include">
+      <ImageLoaded>C:\Windows\System32\WinSCard.dll</ImageLoaded>
+      <ImageLoaded>C:\Windows\System32\vaultcli.dll</ImageLoaded>
+      <ImageLoaded>C:\Windows\System32\samlib.dll</ImageLoaded>
+      <ImageLoaded>C:\Windows\System32\cryptdll.dll</ImageLoaded>
+      <ImageLoaded>C:\Windows\System32\hid.dll</ImageLoaded>
+    </ImageLoad>
+    <CreateRemoteThread onmatch="include">
+      <StartFunction condition="contains">LoadLibrary</StartFunction>
+    </CreateRemoteThread>
+    <CreateRemoteThread onmatch="exclude">
+      <SourceImage>C:\Windows\System32\wbem\WmiPrvSE.exe</SourceImage>
+      <SourceImage>C:\Windows\System32\svchost.exe</SourceImage>
+      <SourceImage>C:\Windows\System32\services.exe</SourceImage>
+      <SourceImage>C:\Windows\System32\audiodg.exe</SourceImage>
+      <SourceImage>C:\Windows\System32\csrss.exe</SourceImage>
+      <SourceImage>C:\Windows\System32\winlogon.exe</SourceImage>
+      <SourceImage>C:\Windows\System32\wininit.exe</SourceImage>
+      <TargetImage condition="end with">Google\Chrome\Application\chrome.exe</TargetImage>
+      <StartModule>C:\windows\system32\kernel32.dll</StartModule>
+    </CreateRemoteThread>
+    <RawAccessRead onmatch="include" />
+    <ProcessAccess onmatch="include">
+      <TargetImage>C:\Windows\system32\lsass.exe</TargetImage>
+    </ProcessAccess>
+    <ProcessAccess onmatch="exclude">
+      <SourceImage condition="end with">wmiprvse.exe</SourceImage>
+      <SourceImage condition="end with">VBoxService.exe</SourceImage>
+      <SourceImage condition="begin with">C:\Program Files (x86)\Symantec\Symantec Endpoint Protection</SourceImage>
+      <SourceImage condition="end with">LTSVC.exe</SourceImage>
+      <SourceImage condition="end with">taskmgr.exe</SourceImage>
+      <SourceImage>C:\Windows\System32\lsm.exe</SourceImage>
+      <SourceImage condition="end with">Microsoft.Identity.AadConnect.Health.AadSync.Host.exe</SourceImage>
+      <SourceImage condition="end with">GoogleUpdate.exe</SourceImage>
+      <SourceImage condition="end with">vmtoolsd.exe</SourceImage>
+      <SourceImage condition="end with">\Citrix\System32\wfshell.exe</SourceImage>
+    </ProcessAccess>
+    <FileCreate onmatch="include">
+      <Image condition="contains">net</Image>
+      <Image condition="contains">python</Image>
+      <Image condition="contains">findstr</Image>
+      <TargetFilename condition="end with">.lnk</TargetFilename>
+      <TargetFilename condition="end with">.vb</TargetFilename>
+      <TargetFilename condition="end with">.vbe</TargetFilename>
+      <TargetFilename condition="end with">.ps2</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\Tasks\</TargetFilename>
+      <TargetFilename condition="end with">.ps1</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\Wbem</TargetFilename>
+      <TargetFilename condition="end with">.pyc</TargetFilename>
+      <TargetFilename condition="end with">.application</TargetFilename>
+      <TargetFilename condition="end with">.py</TargetFilename>
+      <TargetFilename condition="begin with">C:\Users\Default</TargetFilename>
+      <TargetFilename condition="end with">.docm</TargetFilename>
+      <TargetFilename condition="end with">.*proj</TargetFilename>
+      <TargetFilename condition="end with">.pptm</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\Tasks</TargetFilename>
+      <TargetFilename condition="end with">.vbs</TargetFilename>
+      <TargetFilename condition="end with">.sys</TargetFilename>
+      <TargetFilename condition="end with">.pyw</TargetFilename>
+      <TargetFilename condition="contains">\Downloads\</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\GroupPolicy\User\Scripts</TargetFilename>
+      <TargetFilename condition="end with">.hta</TargetFilename>
+      <TargetFilename condition="contains">\Content.Outlook\</TargetFilename>
+      <TargetFilename condition="end with">.scf</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\GroupPolicy\Machine\Scripts</TargetFilename>
+      <TargetFilename condition="end with">.cmd</TargetFilename>
+      <TargetFilename condition="end with">.bat</TargetFilename>
+      <TargetFilename condition="end with">.sln</TargetFilename>
+      <TargetFilename condition="contains">\Startup</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\WindowsPowerShell</TargetFilename>
+      <TargetFilename condition="end with">.xlsm</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\SysWOW64\WindowsPowerShell</TargetFilename>
+      <TargetFilename condition="contains">\Start Menu</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\SysWOW64\Wbem</TargetFilename>
+      <TargetFilename condition="contains">C:\Windows\AppPatch\Custom</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\Drivers</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\SysWOW64\Drivers</TargetFilename>
+      <TargetFilename condition="end with">.appref-ms</TargetFilename>
+      <TargetFilename condition="end with">.exe</TargetFilename>
+    </FileCreate>
+    <FileCreate onmatch="exclude">
+      <Image>C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeC2RClient.exe</Image>
+      <Image condition="begin with">C:\WINDOWS\winsxs\amd64_microsoft-windows</Image>
+      <Image>C:\Program Files (x86)\Dell\CommandUpdate\InvColPC.exe</Image>
+      <Image>C:\Windows\system32\igfxCUIService.exe</Image>
+      <Image>C:\Windows\system32\CompatTelRunner.exe</Image>
+      <Image>C:\Windows\System32\smss.exe</Image>
+      <Image>C:\Windows\system32\wbem\WMIADAP.EXE</Image>
+      <TargetFilename condition="begin with">C:\Windows\System32\wbem\Performance\</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\Tasks\Microsoft\Windows\SoftwareProtectionPlatform\SvcRestartTask</TargetFilename>
+      <TargetFilename condition="end with">WRITABLE.TST</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\DriverStore\Temp\</TargetFilename>
+      <TargetFilename condition="begin with">C:\$WINDOWS.~BT\Sources\SafeOS\SafeOS.Mount\</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\Tasks\Microsoft\Windows\PLA\FabricTraces</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\Tasks\Microsoft\Windows\Customer Experience Improvement Program\Server\ServerRoleUsageCollector</TargetFilename>
+      <TargetFilename condition="begin with">C:\Windows\System32\Tasks\Microsoft\Windows\Customer Experience Improvement Program\Server\ServerCeipAssistant</TargetFilename>
+    </FileCreate>
+    <RegistryEvent onmatch="include">
+      <Image>C:\Windows\system32\LogonUI.exe</Image>
+      <TargetObject condition="contains">SYSTEM\CurrentControlSet\services\SysmonDrv</TargetObject>
+      <TargetObject>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\InProgress\(Default)</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Windows\Appinit_Dlls</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\Providers\Trust</TargetObject>
+      <TargetObject condition="end with">\ProxyServer</TargetObject>
+      <TargetObject condition="end with">\InprocServer32\(Default)</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\Run</TargetObject>
+      <TargetObject condition="contains">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\InstalledSDB</TargetObject>
+      <TargetObject condition="contains">\shell\open\ddeexec</TargetObject>
+      <TargetObject condition="end with">\Start</TargetObject>
+      <TargetObject condition="contains">HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W32Time\TimeProviders</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Print\Monitors</TargetObject>
+      <TargetObject condition="contains">\ContextMenuHandlers</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles</TargetObject>
+      <TargetObject condition="contains">SOFTWARE\Microsoft\Netsh</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Security Center\DisableMonitoring</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Security Center\AllAlertsDisabled</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\InitialProgram</TargetObject>
+      <TargetObject condition="contains">ms-settings\shell\open\command</TargetObject>
+      <TargetObject condition="begin with">HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableLUA</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection\DisableOnAccessProtection</TargetObject>
+      <TargetObject condition="contains">\Microsoft\SystemCertificates\Root\Certificates</TargetObject>
+      <TargetObject condition="begin with">HKLM\Software\Microsoft\Windows\CurrentVersion\explorer\ShellServiceObjectDelayLoad</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Safeboot</TargetObject>
+      <TargetObject condition="contains">\Internet Explorer\Toolbar</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet\SpyNetReporting</TargetObject>
+      <TargetObject condition="contains">\Control\SecurityProviders\WDigest</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify</TargetObject>
+      <TargetObject condition="contains">{AB8902B4-09CA-4bb6-B78D-A8F59079A8D5}</TargetObject>
+      <TargetObject condition="contains">SYSTEM\CurrentControlSet\services\Sysmon</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows\Appinit_Dlls</TargetObject>
+      <TargetObject condition="contains">\Classes\AllFilesystemObjects</TargetObject>
+      <TargetObject condition="end with">\FriendlyName</TargetObject>
+      <TargetObject condition="contains">\Browser Helper Objects</TargetObject>
+      <TargetObject condition="contains">SYSTEM\CurrentControlSet\Control\CrashControl</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Provider</TargetObject>
+      <TargetObject condition="end with">\ImagePath</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\BootExecute</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\AppCertDlls</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Security Center\FirewallOverride</TargetObject>
+      <TargetObject condition="contains">SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\LSASS.exe</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Userinit</TargetObject>
+      <TargetObject condition="contains">\shell\install\command</TargetObject>
+      <TargetObject>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Setup\ServiceStartup</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Cryptography\OID</TargetObject>
+      <TargetObject condition="contains">\Classes\Directory</TargetObject>
+      <TargetObject condition="contains">\mscfile\shell\open\command</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\DisableAntiVirus</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Security Center\UacDisableNotify</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell</TargetObject>
+      <TargetObject condition="contains">\Microsoft\Office\Outlook\Addins</TargetObject>
+      <TargetObject condition="end with">\ServiceDll</TargetObject>
+      <TargetObject condition="contains">\Windows\System\Scripts</TargetObject>
+      <TargetObject condition="begin with">HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\LocalAccountTokenFilterPolicy</TargetObject>
+      <TargetObject condition="contains">\Classes\Folder</TargetObject>
+      <TargetObject condition="contains">\shell\open\command</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Winlogon</TargetObject>
+      <TargetObject>HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Security Center\FirewallDisableNotify</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\DisableAntiSpyware</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\NetworkProvider\Order</TargetObject>
+      <TargetObject condition="contains">\services\Netlogon\Parameters\DisablePasswordChange</TargetObject>
+      <TargetObject condition="contains">\Classes\Drive</TargetObject>
+      <TargetObject condition="contains">\Internet Explorer\Extensions</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Security Center\AntiVirusDisableNotify</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List</TargetObject>
+      <TargetObject condition="contains">\CurrentVersion\Shell</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Services\WinSock</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID</TargetObject>
+      <TargetObject>REGISTRY\MACHINE\SYSTEM\ControlSet001\Services\DNS\Parameters\ServerLevelPluginDll</TargetObject>
+      <TargetObject condition="begin with">HKLM\Software\Microsoft\Windows\CurrentVersion\explorer\ShellExecuteHooks</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Cryptography\Providers\Trust</TargetObject>
+      <TargetObject condition="contains">\Explorer\FileExts</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SecurityProviders</TargetObject>
+      <TargetObject>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection\DisableBehaviorMonitoring</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Image File Execution Options</TargetObject>
+      <TargetObject condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa</TargetObject>
+      <TargetObject condition="end with">\UrlUpdateInfo</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\EnterpriseCertificates\Root\Certificates</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender</TargetObject>
+      <TargetObject condition="contains">\Group Policy\Scripts</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection\DisableScanOnRealtimeEnable</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Security Center\UpdatesDisableNotify</TargetObject>
+      <TargetObject condition="begin with">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions</TargetObject>
+      <TargetObject condition="contains">Software\Classes\CLSID</TargetObject>
+      <TargetObject condition="contains">\Policies\Explorer\Run</TargetObject>
+    </RegistryEvent>
+    <RegistryEvent onmatch="exclude">
+      <Image>C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy\SearchUI.exe</Image>
+      <Image>C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeClickToRun.exe</Image>
+      <Image condition="image">C:\WINDOWS\system32\backgroundTaskHost.exe</Image>
+      <Image>C:\Program Files\WIDCOMM\Bluetooth Software\btwdins.exe</Image>
+      <Image>C:\Program Files (x86)\Webroot\WRSA.exe</Image>
+      <Image>C:\Program Files\Windows Defender\MsMpEng.exe</Image>
+      <Image condition="begin with">C:\$WINDOWS.~BT\</Image>
+      <Image condition="end with">Office\root\integration\integrator.exe</Image>
+      <TargetObject condition="end with">\services\clr_optimization_v2.0.50727_64\Start</TargetObject>
+      <TargetObject condition="end with">ShellBrowser</TargetObject>
+      <TargetObject condition="end with">\services\BITS\Start</TargetObject>
+      <TargetObject condition="end with">\services\clr_optimization_v4.0.30319_64\Start</TargetObject>
+      <TargetObject condition="end with">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\</TargetObject>
+      <TargetObject condition="end with">\services\clr_optimization_v4.0.30319_32\Start</TargetObject>
+      <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Services\UsoSvc\Start</TargetObject>
+      <TargetObject condition="end with">\Lsa\OfflineJoin\CurrentValue</TargetObject>
+      <TargetObject condition="end with">\CurrentVersion\Shell Extensions\Cached</TargetObject>
+      <TargetObject condition="end with">\Components\TrustedInstaller\Events</TargetObject>
+      <TargetObject condition="contains">\OpenWithProgids</TargetObject>
+      <TargetObject condition="end with">\services\clr_optimization_v2.0.50727_32\Start</TargetObject>
+      <TargetObject condition="end with">\Directory\shellex\DragDropHandlers</TargetObject>
+      <TargetObject condition="end with">\services\TrustedInstaller\Start</TargetObject>
+      <TargetObject condition="end with">\OpenWithList\MRUList</TargetObject>
+      <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Kerberos\Domains</TargetObject>
+      <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Publishers\</TargetObject>
+      <TargetObject condition="end with">\Directory\shellex</TargetObject>
+      <TargetObject condition="end with">\CurrentVersion\App Paths</TargetObject>
+      <TargetObject condition="contains">_Classes\AppX</TargetObject>
+      <TargetObject condition="end with">\CurrentVersion\Shell Extensions\Approved</TargetObject>
+      <TargetObject condition="end with">\services\UsoSvc\Start</TargetObject>
+      <TargetObject condition="end with">\UserChoice\Hash</TargetObject>
+      <TargetObject condition="end with">\services\tunnel\Start</TargetObject>
+      <TargetObject condition="end with">\Components\Wlansvc</TargetObject>
+      <TargetObject condition="end with">\CurrentVersion\Image File Execution Options</TargetObject>
+      <TargetObject condition="end with">\Components\Wlansvc\Events</TargetObject>
+      <TargetObject condition="end with">\Components\TrustedInstaller</TargetObject>
+      <TargetObject condition="end with">\CurrentVersion\Run</TargetObject>
+      <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Audit\AuditPolicy</TargetObject>
+      <TargetObject condition="end with">\services\DeviceAssociationService\Start</TargetObject>
+      <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Audit\PerUserAuditing\System</TargetObject>
+      <TargetObject condition="end with">\CurrentVersion\RunOnce</TargetObject>
+      <TargetObject condition="end with">Internet Explorer\Toolbar\Locked</TargetObject>
+      <TargetObject condition="end with">Toolbar\ShellBrowser\ITBar7Layout</TargetObject>
+      <TargetObject condition="end with">\UserChoice</TargetObject>
+      <TargetObject condition="end with">Toolbar\WebBrowser\ITBar7Height</TargetObject>
+      <TargetObject condition="end with">}\PreviousPolicyAreas</TargetObject>
+      <TargetObject condition="end with">\UserChoice\ProgId</TargetObject>
+      <TargetObject condition="contains">\Control\WMI\Autologger\</TargetObject>
+      <TargetObject condition="end with">\Drive\shellex\DragDropHandlers</TargetObject>
+      <TargetObject condition="end with">\Drive\shellex</TargetObject>
+      <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Audit</TargetObject>
+      <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa\SspiCache</TargetObject>
+      <TargetObject condition="end with">} 0xFFFF</TargetObject>
+      <TargetObject condition="end with">Toolbar\WebBrowser</TargetObject>
+      <TargetObject condition="end with">\OpenWithList</TargetObject>
+    </RegistryEvent>
+    <FileCreateStreamHash onmatch="include">
+      <TargetFilename condition="contains">Content.Outlook</TargetFilename>
+      <TargetFilename condition="end with">.lnk</TargetFilename>
+      <TargetFilename condition="end with">.ps2</TargetFilename>
+      <TargetFilename condition="end with">.vbs</TargetFilename>
+      <TargetFilename condition="end with">.ps1</TargetFilename>
+      <TargetFilename condition="end with">.bat</TargetFilename>
+      <TargetFilename condition="contains">Downloads</TargetFilename>
+      <TargetFilename condition="end with">.hta</TargetFilename>
+      <TargetFilename condition="end with">.exe</TargetFilename>
+      <TargetFilename condition="contains">Temp\7z</TargetFilename>
+      <TargetFilename condition="end with">.vbe</TargetFilename>
+      <TargetFilename condition="end with">.cmd</TargetFilename>
+      <TargetFilename condition="end with">.reg</TargetFilename>
+      <TargetFilename condition="end with">.vb</TargetFilename>
+    </FileCreateStreamHash>
+    <PipeEvent onmatch="include" />
+    <WmiEvent onmatch="include">
+      <Operation>Created</Operation>
+    </WmiEvent>
+  </EventFiltering>
+</Sysmon>
