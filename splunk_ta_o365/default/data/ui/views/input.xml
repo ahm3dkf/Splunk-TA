@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view template="splunk_ta_o365:/templates/base.html" type="html" isDashboard="False">
+        <label>Input</label>
+</view>

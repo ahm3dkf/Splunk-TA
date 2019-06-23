@@ -1,0 +1,5 @@
+<nav>
+    <view name="input" default="true"/>
+    <view name="tenant" />
+    <view name="settings" />
+</nav>

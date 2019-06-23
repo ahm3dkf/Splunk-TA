@@ -1,0 +1,98 @@
+Workload,Operation,dataset_name,action,change_type,object_category
+AzureActiveDirectory,Add delegation entry*,account_management,modified,AAA,user
+AzureActiveDirectory,Add group*,account_management,modified,AAA,group
+AzureActiveDirectory,Add member to group*,account_management,modified,AAA,user
+AzureActiveDirectory,Add member to role*,account_management,modified,AAA,user
+AzureActiveDirectory,Add role member to role*,account_management,modified,AAA,user
+AzureActiveDirectory,Add owner to application*,account_management,modified,AAA,user
+AzureActiveDirectory,Add owner to group*,account_management,modified,AAA,user
+AzureActiveDirectory,Add owner to service principal*,account_management,modified,AAA,user
+AzureActiveDirectory,Add service principal*,account_management,modified,AAA,user
+AzureActiveDirectory,Add user*,account_management,created,AAA,user
+AzureActiveDirectory,Change user password*,account_management,modified,AAA,user
+AzureActiveDirectory,Delete group*,account_management,deleted,AAA,user
+AzureActiveDirectory,Remove delegation entry*,account_management,modified,AAA,user
+AzureActiveDirectory,Remove member from group*,account_management,deleted,AAA,user
+AzureActiveDirectory,Reset user password*,account_management,modified,AAA,user
+AzureActiveDirectory,Set Company Information*,account_management,modified,AAA,user
+AzureActiveDirectory,Set delegation entry*,account_management,modified,AAA,user
+AzureActiveDirectory,Update group*,account_management,modified,AAA,user
+AzureActiveDirectory,Update user*,account_management,modified,AAA,user
+AzureActiveDirectory,Change user license*,account_management,modified,AAA,user
+AzureActiveDirectory,Delete user*,account_management,deleted,AAA,user
+AzureActiveDirectory,Set force change user password*,account_management,modified,AAA,user
+AzureActiveDirectory,Set license properties*,account_management,modified,AAA,user
+AzureActiveDirectory,Update group*,account_management,modified,AAA,group
+AzureActiveDirectory,Add service principal credentials*,account_management,modified,AAA,user
+AzureActiveDirectory,Remove service principal*,account_management,deleted,AAA,user
+AzureActiveDirectory,Remove service principal credentials*,account_management,modified,AAA,user
+AzureActiveDirectory,Remove role member from role*,account_management,modified,AAA,user
+AzureActiveDirectory,Set company contact information*,account_management,modified,AAA,user
+AzureActiveDirectory,Add domain to company*,account_management,modified,AAA,user
+AzureActiveDirectory,Add partner to company*,account_management,modified,AAA,user
+AzureActiveDirectory,Remove domain from company*,account_management,modified,AAA,user
+AzureActiveDirectory,Remove partner from company*,account_management,modified,AAA,user
+AzureActiveDirectory,Set domain authentication*,account_management,modified,AAA,user
+AzureActiveDirectory,Set federation settings on domain*,account_management,modified,AAA,user
+AzureActiveDirectory,Set password policy*,account_management,modified,AAA,user
+AzureActiveDirectory,Set DirSyncEnabled flag on company*,account_management,modified,AAA,user
+AzureActiveDirectory,Update domain*,account_management,modified,AAA,user
+AzureActiveDirectory,Verify domain*,account_management,read,AAA,user
+AzureActiveDirectory,Verify email verified domain*,account_management,read,AAA,user
+SharePoint,AccessInvitationCreated,endpoint_changes,created,user,user
+SharePoint,FileAccessed,endpoint_changes,read,filesystem,file
+SharePoint,FileCopied,endpoint_changes,read,filesystem,file
+SharePoint,FileDeleted,endpoint_changes,deleted,filesystem,file
+SharePoint,FileDownloaded,endpoint_changes,read,filesystem,file
+SharePoint,FileModified,endpoint_changes,modified,filesystem,file
+SharePoint,FileMoved,endpoint_changes,modified,filesystem,file
+SharePoint,FileRenamed,endpoint_changes,modified,filesystem,file
+SharePoint,FileSyncDownloadedFull,endpoint_changes,unknown,filesystem,file
+SharePoint,FileSyncDownloadedPartial,endpoint_changes,unknown,filesystem,file
+SharePoint,FileSyncUploadedFull,endpoint_changes,unknown,filesystem,file
+SharePoint,FileUploaded,endpoint_changes,created,filesystem,file
+SharePoint,FileViewed,endpoint_changes,read,filesystem,file
+SharePoint,GroupAdded,endpoint_changes,created,user,group
+SharePoint,SharedLinkCreated,endpoint_changes,created,user,user
+SharePoint,SharedLinkDisabled,endpoint_changes,modified,user,user
+SharePoint,UserAddedToGroup,endpoint_changes,created,user,group
+SharePoint,AddedToGroup,endpoint_changes,created,user,group
+SharePoint,VideoRequested,endpoint_changes,unknown,user,object
+SharePoint,FileCheckedIn,endpoint_changes,created,filesystem,file
+SharePoint,FileCheckedOut,endpoint_changes,read,filesystem,file
+SharePoint,FileCheckOutDiscarded,endpoint_changes,modified,filesystem,file
+SharePoint,FileRestored,endpoint_changes,modified,filesystem,file
+SharePoint,SharingSet,endpoint_changes,modified,user,user
+SharePoint,SharingRevoked,endpoint_changes,modified,user,user
+SharePoint,AccessInvitationAccepted,endpoint_changes,modified,user,user
+SharePoint,AccessInvitationExpired,endpoint_changes,modified,user,user
+SharePoint,AccessRequestApproved,endpoint_changes,modified,user,user
+SharePoint,AccessRequestAccepted,endpoint_changes,modified,user,user
+SharePoint,AccessRequestCreated,endpoint_changes,created,user,user
+SharePoint,AccessRequestRejected,endpoint_changes,unknown,user,user
+SharePoint,AccessRequestDenied,endpoint_changes,unknown,user,user
+SharePoint,AccessInvitationExpired,endpoint_changes,modified,user,user
+SharePoint,AccessInvitationUpdated,endpoint_changes,modified,user,user
+SharePoint,AccessInvitationRevoked,endpoint_changes,modified,user,user
+SharePoint,ManagedSyncClientAllowed,endpoint_changes,modified,user,user
+SharePoint,FileSyncUploadedPartial,endpoint_changes,modified,filesystem,file
+SharePoint,ExemptUserAgentSet,endpoint_changes,modified,user,user
+SharePoint,SiteCollectionAdminAdded,endpoint_changes,created,user,user
+SharePoint,AllowGroupCreationSet,endpoint_changes,created,user,group
+SharePoint,CustomizeExemptUsers,endpoint_changes,modified,user,user
+SharePoint,SendToConnectionAdded,endpoint_changes,created,user,user
+SharePoint,SiteCollectionCreated,endpoint_changes,created,user,user
+SharePoint,GroupRemoved,endpoint_changes,deleted,user,group
+SharePoint,SendToConnectionRemoved,endpoint_changes,deleted,user,user
+SharePoint,PreviewModeEnabledSet,endpoint_changes,modified,user,user
+SharePoint,LegacyWorkflowEnabledSet,endpoint_changes,modified,user,user
+SharePoint,OfficeOnDemandSet,endpoint_changes,modified,user,user
+SharePoint,NewsFeedEnabledSet,endpoint_changes,modified,user,user
+SharePoint,PeopleResultsScopeSet,endpoint_changes,modified,user,user
+SharePoint,SitePermissionsModified,endpoint_changes,modified,user,user
+SharePoint,UserRemovedFromGroup,endpoint_changes,deleted,user,user
+SharePoint,RemovedFromGroup,endpoint_changes,deleted,user,user
+SharePoint,SiteRenamed,endpoint_changes,modified,user,user
+SharePoint,SiteAdminChangeRequest,endpoint_changes,modified,user,user
+SharePoint,HostSiteSet,endpoint_changes,modified,user,user
+SharePoint,GroupUpdated,endpoint_changes,modified,user,group

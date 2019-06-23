@@ -1,0 +1,17 @@
+# Application-level permissions
+
+[]
+access = read : [ * ], write : [ admin, power ]
+export = system
+
+[html/Tenant]
+owner = none
+export = none
+
+[html/Input]
+owner = none
+export = none
+
+[html/Settings]
+owner = none
+export = none
