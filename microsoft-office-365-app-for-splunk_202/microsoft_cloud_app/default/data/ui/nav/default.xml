@@ -1,0 +1,21 @@
+<nav search_view="search" color="E8391A">
+	  <view name="overview" default='true' />
+  <collection label="Azure AD">
+	  <view name="azuread_login_activity" />
+  </collection>
+  <collection label="Exchange">
+      <view name="exchange_overview" />
+      <view name="exchange_administration" />
+  </collection>
+  <collection label="SharePoint">
+      <view name="sharepoint_oveview" />
+  </collection>
+  <collection label="OneDrive">
+      <view name="onedrive_overview" />
+	  <view name="onedrive_file_investigator" />
+  </collection>
+  <collection label="Power BI">
+      <view name="powerbi_overview" />
+  </collection>
+
+</nav>

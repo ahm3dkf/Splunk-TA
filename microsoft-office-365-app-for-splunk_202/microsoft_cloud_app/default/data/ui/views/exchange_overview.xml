@@ -1,0 +1,100 @@
+<form>
+  <label>Exchange Overview</label>
+  <fieldset submitButton="false">
+    <input type="time" token="field1">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Mailbox Logins</title>
+      <input type="multiselect" token="country">
+        <label>Exclude Country:</label>
+        <valuePrefix>"</valuePrefix>
+        <valueSuffix>"</valueSuffix>
+        <delimiter> AND Country!=</delimiter>
+        <fieldForLabel>Country</fieldForLabel>
+        <fieldForValue>Country</fieldForValue>
+        <search>
+          <query>`o365_sourcetypes` Workload=Exchange Operation=MailboxLogin | iplocation ClientIPAddress | stats count by Country | fields - count</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <choice value="None">None</choice>
+        <default>None</default>
+        <initialValue>None</initialValue>
+      </input>
+      <map>
+        <search>
+          <query>`o365_sourcetypes` Workload=Exchange Operation=MailboxLogin | iplocation ClientIPAddress | search Country!=$country$ | geostats globallimit=0 count by user</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="mapping.choroplethLayer.colorBins">5</option>
+        <option name="mapping.choroplethLayer.colorMode">auto</option>
+        <option name="mapping.choroplethLayer.maximumColor">0xDB5800</option>
+        <option name="mapping.choroplethLayer.minimumColor">0x2F25BA</option>
+        <option name="mapping.choroplethLayer.neutralPoint">0</option>
+        <option name="mapping.choroplethLayer.shapeOpacity">0.75</option>
+        <option name="mapping.choroplethLayer.showBorder">1</option>
+        <option name="mapping.data.maxClusters">100</option>
+        <option name="mapping.legend.placement">bottomright</option>
+        <option name="mapping.map.center">(0,0)</option>
+        <option name="mapping.map.panning">1</option>
+        <option name="mapping.map.scrollZoom">0</option>
+        <option name="mapping.map.zoom">2</option>
+        <option name="mapping.markerLayer.markerMaxSize">50</option>
+        <option name="mapping.markerLayer.markerMinSize">10</option>
+        <option name="mapping.markerLayer.markerOpacity">0.8</option>
+        <option name="mapping.seriesColors">[0xFF0000]</option>
+        <option name="mapping.showTiles">1</option>
+        <option name="mapping.tileLayer.maxZoom">7</option>
+        <option name="mapping.tileLayer.minZoom">0</option>
+        <option name="mapping.tileLayer.tileOpacity">1</option>
+        <option name="mapping.tileLayer.url">http://mt1.google.com/vt/lyrs=m&amp;x={x}&amp;y={y}&amp;z={z}</option>
+        <option name="mapping.type">marker</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </map>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Mail Attachments</title>
+      <table>
+        <search>
+          <query>sourcetype="o365:management:activity" OR sourcetype="ms:o365:management" Workload=Exchange Operation=Create
+| rex max_match=0 field=Item.Attachments "(?&lt;bytes&gt;\d+)b" 
+| streamstats window=1 sum(bytes) AS totalbytes
+| eval kilobytes = round(totalbytes / 1024,0) 
+| stats count by UserId, Item.Subject, Item.Attachments, kilobytes | fields - count
+| rename UserId AS User Item.Subject AS Subject Item.Attachments AS Attachment kilobytes AS KB
+|sort - KB</query>
+          <earliest>-7d@w0</earliest>
+          <latest>@w0</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">5</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="number" field="KB">
+          <option name="precision">0</option>
+          <option name="unit">KB</option>
+        </format>
+      </table>
+    </panel>
+  </row>
+</form>

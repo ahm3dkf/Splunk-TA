@@ -1,0 +1,137 @@
+<form>
+  <label>File Investigator</label>
+  <fieldset submitButton="false">
+    <input type="dropdown" token="option">
+      <label>Select Field</label>
+      <choice value="SourceFileName">File Name</choice>
+      <choice value="SourceFileExtension">File Extension</choice>
+      <choice value="ClientIP">Client IP</choice>
+      <choice value="UserAgent">User Agent</choice>
+      <default>SourceFileName</default>
+      <change>
+        <condition value="SourceFileName">
+          <unset token="form.SourceFileExtension_input"></unset>
+          <unset token="SourceFileExtension_box"></unset>
+          <unset token="form.ClientIP_input"></unset>
+          <unset token="ClientIP_box"></unset>
+          <unset token="form.UserAgent_input"></unset>
+          <unset token="UserAgent_box"></unset>
+          <set token="SourceFileName_box"></set>
+        </condition>
+        <condition value="SourceFileExtension">
+          <unset token="form.SourceFileName_input"></unset>
+          <unset token="SourceFileName_box"></unset>
+          <unset token="form.ClientIP_input"></unset>
+          <unset token="ClientIP_box"></unset>
+          <unset token="form.UserAgent_input"></unset>
+          <unset token="UserAgent_box"></unset>
+          <set token="SourceFileExtension_box"></set>
+        </condition>
+        <condition value="ClientIP">
+          <unset token="form.SourceFileName_input"></unset>
+          <unset token="SourceFileName_box"></unset>
+          <unset token="form.UserAgent_input"></unset>
+          <unset token="UserAgent_box"></unset>
+          <unset token="form.SourceFileExtension_input"></unset>
+          <unset token="SourceFileExtension_box"></unset>
+          <set token="ClientIP_box"></set>
+        </condition>
+        <condition value="UserAgent">
+          <unset token="form.SourceFileName_input"></unset>
+          <unset token="SourceFileName_box"></unset>
+          <unset token="form.SourceFileExtension_input"></unset>
+          <unset token="SourceFileExtension_box"></unset>
+          <unset token="form.ClientIP_input"></unset>
+          <unset token="ClientIP_box"></unset>
+          <set token="UserAgent_box"></set>
+        </condition>
+      </change>
+    </input>
+    <input depends="$SourceFileName_box$" type="text" token="SourceFileName_input">
+      <label>File Name</label>
+    </input>
+    <input depends="$SourceFileExtension_box$" type="text" token="SourceFileExtension_input">
+      <label>File Extension</label>
+    </input>
+    <input depends="$ClientIP_box$" type="text" token="ClientIP_input">
+      <label>Client IP</label>
+    </input>
+    <input depends="$UserAgent_box$" type="text" token="UserAgent_input">
+      <label>User Agent</label>
+    </input>
+    <input type="time" token="time">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel depends="$SourceFileName_box$">
+      <table>
+        <title>Matching File Names</title>
+        <search>
+          <query>`o365_sourcetypes` Workload=OneDrive SourceFileName=*"$SourceFileName_input$"* | stats list(Operation) AS Operation list(_time) AS Time by SourceFileName user file_path ClientIP UserAgent | rename SourceFileName AS "File Name" user AS User file_path AS "File Path" ClientIP AS "Client IP" UserAgent AS "User Agent" | fields "File Name" User "File Path" "Client IP" Operation Time "User Agent" | eval Time=strftime(Time, "%Y-%m-%d %H:%M:%S") | sort -Time</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="wrap">false</option>
+        <format type="color" field="Action">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+        <drilldown>
+          <set token="file_name">$click.value2$</set>
+        </drilldown>
+      </table>
+    </panel>
+    <panel depends="$SourceFileExtension_box$">
+      <table>
+        <title>Matching File Extensions</title>
+        <search>
+          <query>`o365_sourcetypes` Workload=OneDrive SourceFileExtension=*"$SourceFileExtension_input$"* | stats list(Operation) AS Operation list(_time) AS Time by SourceFileName user file_path ClientIP UserAgent | rename SourceFileName AS "File Name" user AS User file_path AS "File Path" ClientIP AS "Client IP" UserAgent AS "User Agent" | fields "File Name" User "File Path" "Client IP" Operation Time "User Agent" | eval Time=strftime(Time, "%Y-%m-%d %H:%M:%S") | sort -Time</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="file_name">$click.value2$</set>
+        </drilldown>
+      </table>
+    </panel>
+    <panel depends="$ClientIP_box$">
+      <table>
+        <title>Matching Client IP Addresses</title>
+        <search>
+          <query>`o365_sourcetypes` Workload=OneDrive SourceFileExtension=*"$ClientIP_input$"* | stats list(Operation) AS Operation list(_time) AS Time by SourceFileName user file_path ClientIP UserAgent | rename SourceFileName AS "File Name" user AS User file_path AS "File Path" ClientIP AS "Client IP" UserAgent AS "User Agent" | fields "File Name" User "File Path" "Client IP" Operation Time "User Agent" | eval Time=strftime(Time, "%Y-%m-%d %H:%M:%S") | sort -Time</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="file_name">$click.value2$</set>
+        </drilldown>
+      </table>
+    </panel>
+    <panel depends="$UserAgent_box$">
+      <table>
+        <title>Matching User Agents</title>
+        <search>
+          <query>`o365_sourcetypes` Workload=OneDrive SourceFileExtension=*"$UserAgent_input$"* | stats list(Operation) AS Operation list(_time) AS Time by SourceFileName user file_path ClientIP UserAgent | rename SourceFileName AS "File Name" user AS User file_path AS "File Path" ClientIP AS "Client IP" UserAgent AS "User Agent" | fields "File Name" User "File Path" "Client IP" Operation Time "User Agent" | eval Time=strftime(Time, "%Y-%m-%d %H:%M:%S") | sort -Time</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="file_name">$click.value2$</set>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</form>

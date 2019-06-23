@@ -1,0 +1,13 @@
+[macros/o365_service_message]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 7.2.3
+modtime = 1548714930.944616000
+
+[macros/o365_service_status]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 7.2.3
+modtime = 1548714936.839743000

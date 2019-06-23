@@ -1,0 +1,131 @@
+<form>
+  <label>OneDrive Overview</label>
+  <fieldset submitButton="false">
+    <input type="time" token="field1">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>`o365_sourcetypes` Workload=OneDrive | stats dc(UserId)</query>
+          <earliest>-7d@w0</earliest>
+          <latest>@w0</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x0748AE","0x0748AE"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Active Users - Previous Week</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Uploads / Downloads - Unique User Count</title>
+        <search>
+          <query>`o365_sourcetypes` Workload=OneDrive Operation=FileSync* OR Operation=FileUploaded OR Operation=FileDownloaded 
+| timechart useother=f limit=20 dc(UserId) by Operation
+| rename FileSyncUploadedFull AS "Sync Upload Users" FileSyncDownloadedFull AS "Sync Download Users" FileUploaded AS "Manual Upload Users" FileDownloaded AS "Manual Download Users"</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>OneDrive Activity by Location</title>
+      <map>
+        <search>
+          <query>`o365_sourcetypes` Workload=OneDrive | iplocation ClientIP | geostats latfield=lat longfield=lon count by Operation</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="drilldown">all</option>
+        <option name="mapping.data.maxClusters">100</option>
+        <option name="mapping.map.center">(14.94,15.82)</option>
+        <option name="mapping.map.panning">1</option>
+        <option name="mapping.map.scrollZoom">0</option>
+        <option name="mapping.map.zoom">2</option>
+        <option name="mapping.markerLayer.markerMaxSize">50</option>
+        <option name="mapping.markerLayer.markerMinSize">10</option>
+        <option name="mapping.markerLayer.markerOpacity">0.8</option>
+        <option name="mapping.seriesColors">[0x0748AE]</option>
+        <option name="mapping.showTiles">1</option>
+        <option name="mapping.tileLayer.maxZoom">7</option>
+        <option name="mapping.tileLayer.minZoom">0</option>
+        <option name="mapping.tileLayer.tileOpacity">1</option>
+        <option name="mapping.tileLayer.url">https://mt1.google.com/vt/lyrs=m&amp;x={x}&amp;y={y}&amp;z={z}</option>
+        <option name="mapping.type">marker</option>
+      </map>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Duplicate File Uploads</title>
+      <table>
+        <search>
+          <query>`o365_sourcetypes` Workload=OneDrive Operation=FileSyncUploadedFull OR Operation=FileUploaded 
+| stats dc(UserId) by SourceFileName ,FileSyncBytesCommitted
+| where count &gt; 10 
+| sort - count
+| rename FileSyncBytesCommitted AS "File Size" SourceFileName AS "File Name" count AS Copies</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">10</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Items Shared with External Users</title>
+        <search>
+          <query>`o365_sourcetypes` Workload=OneDrive TargetUserOrGroupType=Guest  | table _time, Workload, UserId, TargetUserOrGroupName, Operation, ItemType, ObjectId,  | rename Workload AS Location UserId AS "Source User" ItemType AS "Item Type" ObjectId AS Object TargetUserOrGroupName AS "Target User" | sort - _time "Source User" "Target User"</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="count">5</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="Operation">
+          <colorPalette type="map">{"SharingSet":#6DB7C6,"SharingInvitationCreated":#ED8440,"SharingInvitationAccepted":#F7BC38}</colorPalette>
+        </format>
+      </table>
+    </panel>
+  </row>
+</form>

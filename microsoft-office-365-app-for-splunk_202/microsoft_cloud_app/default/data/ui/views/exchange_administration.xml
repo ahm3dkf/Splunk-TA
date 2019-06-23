@@ -1,0 +1,62 @@
+<form>
+  <label>Admin Audit</label>
+  <fieldset submitButton="false">
+    <input type="time" token="field1">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Mailbox Permission Modifications</title>
+      <table>
+        <search>
+          <query>`o365_sourcetypes` Workload=Exchange Operation=*permission* | table CreationTime Operation ObjectId Parameters{}.Name Parameters{}.Value user | rename ObjectId AS Object Parameters{}.Name AS Parameter Parameters{}.Value AS "Value" user AS "Modified By"</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">1</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="Operation">
+          <colorPalette type="sharedList"></colorPalette>
+          <scale type="sharedCategory"></scale>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <title>Mailbox Migration Tasks</title>
+      <table>
+        <search>
+          <query>`o365_sourcetypes` Workload=Exchange  Operation="Remove-MigrationBatch" | table _time ObjectId src_user ResultStatus | rename ObjectId AS Name src_user AS "Source User" ResultStatus AS Complete</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">3</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="Status">
+          <colorPalette type="map">{"success":#65A637}</colorPalette>
+        </format>
+        <format type="color" field="Complete">
+          <colorPalette type="map">{"True":#53A051,"False":#DC4E41}</colorPalette>
+        </format>
+      </table>
+    </panel>
+  </row>
+</form>

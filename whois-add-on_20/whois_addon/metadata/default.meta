@@ -1,0 +1,9 @@
+[lookups]
+export = system
+
+[workflow_actions/whois]
+access = read : [ * ]
+export = system
+owner = admin
+
+
