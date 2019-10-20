@@ -157,7 +157,7 @@ echo "[*] Successfully completed"
 
 echo "[*] downloading splunk "
 
-wget -O splunk-7.2.5.1-962d9a8e1586-Linux-x86_64.tgz 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=7.2.5.1&product=splunk&filename=splunk-7.2.5.1-962d9a8e1586-Linux-x86_64.tgz&wget=true'
+wget -O /tmp/splunk-7.3.2-c60db69f8e32-Linux-x86_64.tgz 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=7.3.2&product=splunk&filename=splunk-7.3.2-c60db69f8e32-Linux-x86_64.tgz&wget=true'
 
 ret_code=$?
 if [ $ret_code != 0 ]; 
@@ -167,14 +167,14 @@ break;
 fi
 echo "[*] Successfully completed"
 
-echo "[*] doing command : tar zxf splunk-7.2.5.1-962d9a8e1586-Linux-x86_64.tgz"
+echo "[*] doing command : tar zxf splunk-7.3.2-c60db69f8e32-Linux-x86_64.tgz"
 
-tar zxf splunk-7.2.5.1-962d9a8e1586-Linux-x86_64.tgz
+tar zxf splunk-7.3.2-c60db69f8e32-Linux-x86_64.tgz
 
 ret_code=$?
 if [ $ret_code != 0 ]; 
 then 
-echo "error in command : tar zxf splunk-7.2.5.1-962d9a8e1586-Linux-x86_64.tgz "
+echo "error in command : tar zxf splunk-7.3.2-c60db69f8e32-Linux-x86_64.tgz "
 break;
 fi
 echo "[*] Successfully completed"
